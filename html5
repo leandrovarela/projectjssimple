@@ -1,0 +1,66 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa</title>
+</head>
+<style>
+    .titulo {
+        color: green;
+    }
+</style>
+<body>
+    <h1 class="titulo">Bem vindo a minha rifa</h1>
+    <button onclick="obtemRifaPremiada()">Sortear</button>
+    <p id="numero-sorteado">Numero sorteado: </p>
+    <p id="pessoa-sortuda"></p>
+</body>
+<script>
+    class Candidato {
+        constructor(nome, numeroRifa) {
+            this.nome = nome
+            this.numeroRifa = numeroRifa
+        }
+    }
+    let listaRifas = [
+        "123",
+        "456",
+        "781",
+        "782",
+        "783",
+        "784",
+        "785",
+        "786",
+        "787",
+        "788",
+        "789",
+        "7810",
+        "780",
+    ]
+    let listaCandidatos = [
+        new Candidato("Leandro", listaRifas[0]),
+        new Candidato("Rogério", listaRifas[1]),
+        new Candidato("Fulano1", listaRifas[2]),
+        new Candidato("Fulano2", listaRifas[3]),
+        new Candidato("Fulano3", listaRifas[4]),
+        new Candidato("Fulano4", listaRifas[5]),
+        new Candidato("Fulano5", listaRifas[6]),
+        new Candidato("Fulano6", listaRifas[7]),
+        new Candidato("Fulano7", listaRifas[8]),
+        new Candidato("Fulano8", listaRifas[9]),
+        new Candidato("Fulano9", listaRifas[10]),
+        new Candidato("Fulano10", listaRifas[11]),
+        new Candidato("Fulano11", listaRifas[12]),
+    ]
+    function obtemRifaPremiada(rifas = listaRifas, candidatos = listaCandidatos) {
+        let indiceNumPremiado = Math.floor(Math.random() * listaRifas.length)
+        let rifaPremiada = listaRifas[indiceNumPremiado]
+        let pessoaSortuda = listaCandidatos.find(candidato => candidato.numeroRifa == rifaPremiada)
+        document.getElementById("numero-sorteado").innerHTML = `Número sorteado: ${rifaPremiada}`
+        document.getElementById("pessoa-sortuda").innerHTML = `Parabéns ${pessoaSortuda.nome}`
+    }
+</script>
+</html>
